@@ -2,11 +2,8 @@ package com.dts.demo_cinema.Services;
 
 import com.dts.demo_cinema.Domain.Entity.MovietheaterEntity;
 import com.dts.demo_cinema.Domain.Reponse.Reponse;
-import com.dts.demo_cinema.Domain.Request.CreateMovietheater;
-import com.dts.demo_cinema.Domain.Request.DeleteMovieTheater;
-import com.dts.demo_cinema.Domain.Request.FindByNameMovieTheater;
-import com.dts.demo_cinema.Domain.Request.UpdateMovieTheater;
-import com.dts.demo_cinema.Repositories.FindReposetories;
+import com.dts.demo_cinema.Domain.Request.*;
+import com.dts.demo_cinema.Repositories.FindReponsitories;
 import com.dts.demo_cinema.Repositories.MovieTheaterRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +16,7 @@ public class MTheaterService implements MovieTheaterService {
     @Autowired
     private MovieTheaterRepo movieTheaterRepo;
     @Autowired
-    private FindReposetories findReposetories;
+    private FindReponsitories findReponsitories;
     @Override
     public void save(MovietheaterEntity movietheaterEntity) {
         movieTheaterRepo.save(movietheaterEntity);
@@ -86,8 +83,13 @@ public class MTheaterService implements MovieTheaterService {
             return optional.get();
         return null;
     }
-    public List<FindByNameMovieTheater> findMovieTheaterByName(String name_movietheater){
-        return findReposetories.findMovieTheaterByName(name_movietheater);
+    public List<MovietheaterEntity> findMovieaTheaterByNames(String name_movietheater){
+    return movieTheaterRepo.FindMovietheaterByName(name_movietheater);
     }
-
+    public List<MovieTheaterMappRoom> findRoomBynameMovieTheater(String name_movietheater){
+        return findReponsitories.FindRoomByNameMovieTheater(name_movietheater);
+    }
+    public List<RoomMappSecreenMovieTheaterMovie> findAllRoom(String name_movietheater,int id_movie,int id_screen){
+        return findReponsitories.findAllRoomByMovie(name_movietheater,id_movie,id_screen);
+    }
 }

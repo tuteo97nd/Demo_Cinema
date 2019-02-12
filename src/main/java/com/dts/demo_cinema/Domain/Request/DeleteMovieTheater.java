@@ -18,19 +18,4 @@ public class DeleteMovieTheater {
     public DeleteMovieTheater(int idMovietheater) {
         this.idMovietheater = idMovietheater;
     }
-
-    public int getIdMovietheater() {
-        return idMovietheater;
-    }
-
-    public void setIdMovietheater(int idMovietheater) {
-        this.idMovietheater = idMovietheater;
-    }
-
-    @Override
-    public String toString() {
-        return "DeleteMovieTheater{" +
-                "idMovietheater=" + idMovietheater +
-                '}';
-    }
 }

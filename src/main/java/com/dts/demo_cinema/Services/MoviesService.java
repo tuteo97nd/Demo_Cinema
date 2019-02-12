@@ -14,21 +14,10 @@ import java.util.Optional;
 
 @Service
 public class MoviesService implements BaseMovieTheaterService<MoviesEntity>{
-//    @Autowired
-//    private MoviesReponsitory moviesReponsitory;
-//
+
+
     @Autowired
     private MovieRepositoryInterface movieRepositoryInterface;
-//
-//    public List<MoviesMappingScreening> findScreen(String id_movie,String id_movietheater){
-//        return moviesReponsitory.findScreen(id_movie,id_movietheater);
-//    }
-//    public List<MovieMappMovieTheater> findmovitheater(String name_movie){
-//        return moviesReponsitory.findMovietheater(name_movie);
-//    }
-//    public List<MoviesMappingSeat> findSeat(String id_movie, String id_movietheater){
-//        return moviesReponsitory.findSeat(id_movie,id_movietheater);
-//    }
     public void createMovie(MovieRequest request){
         Reponse baseReponse = new Reponse();
         try {

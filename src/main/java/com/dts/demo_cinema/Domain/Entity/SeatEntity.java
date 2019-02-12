@@ -1,7 +1,7 @@
 package com.dts.demo_cinema.Domain.Entity;
 
 import com.dts.demo_cinema.Domain.Mapping.InformationSeat;
-import com.dts.demo_cinema.Domain.Request.FindByNameMovieTheater;
+
 
 import javax.persistence.*;
 import java.util.Objects;

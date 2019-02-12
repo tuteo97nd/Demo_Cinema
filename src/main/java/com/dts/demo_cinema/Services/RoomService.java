@@ -18,15 +18,15 @@ public class RoomService implements RoomServiceiplm {
     @Override
     public Reponse CreateRoom(CreateRoom request) {
         Reponse re=new Reponse();
-       // try{
+        try{
             RoomEntity roomEntity=new RoomEntity();
             roomEntity.setIdRoom(request.getIdRoom());
             roomEntity.setNameRoom(request.getNameRoom());
             roomEntity.setSeatNo(request.getSeatNo());
             save(roomEntity);
-//        }catch (Exception e){
-//        re.server_err();
-//        }
+        }catch (Exception e){
+        re.server_err();
+        }
         return re;
     }
 
