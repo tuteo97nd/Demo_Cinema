@@ -1,6 +1,6 @@
 package com.dts.demo_cinema.Domain.Entity;
 
-import com.dts.demo_cinema.Domain.Request.FindByNameMovieTheater;
+import com.dts.demo_cinema.Domain.Request.MovieTheaterMappRoom;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -9,13 +9,13 @@ import java.util.Objects;
 @Entity
 @Table(name = "team2_movietheater", schema = "booking_cinema", catalog = "")
 @SqlResultSetMappings(
-        @SqlResultSetMapping(name = "FindByNameMovieTheater",
+        @SqlResultSetMapping(name = "MovieTheaterMappRoom",
                 classes = @ConstructorResult(
-                        targetClass = FindByNameMovieTheater.class,
+                        targetClass = MovieTheaterMappRoom.class,
                         columns = {
-                                @ColumnResult(name = "address", type = String.class),
-                                @ColumnResult(name = "image_movietheater", type = String.class),
-                                @ColumnResult(name = "name_movietheater", type = String.class)
+                                @ColumnResult(name = "name_movietheater", type = String.class),
+                                @ColumnResult(name = "name_room", type = String.class),
+                                @ColumnResult(name = "seat_no", type = int.class)
                         }
                 ))
 )
