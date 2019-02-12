@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("/movietheater")
 public class MovieTheaterController {
     @Autowired
-   private MTheaterService mTheaterService;
+    private MTheaterService mTheaterService;
     @PostMapping(value = "/create",consumes = MediaType.APPLICATION_JSON_VALUE)
     public Reponse CreateMovieTheater(@RequestBody CreateMovietheater request){
         return  mTheaterService.CreateMovieTheater(request);
@@ -34,10 +34,12 @@ public class MovieTheaterController {
     public List<MovietheaterEntity> findAll(){
         return mTheaterService.findAll();
     }
+
     @GetMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public MovietheaterEntity findById(@PathVariable("id") int id) {
         return mTheaterService.findById(id);
     }
+
     @GetMapping("/namemovietheater/{name_movietheater}")
     public List<FindByNameMovieTheater> findmovitheater(@PathVariable("name_movietheater") String name_movietheater){
         return mTheaterService.findMovieTheaterByName(name_movietheater);

@@ -3,6 +3,7 @@ package com.dts.demo_cinema.Services;
 import com.dts.demo_cinema.Domain.Entity.MoviesEntity;
 
 import com.dts.demo_cinema.Domain.Reponse.Reponse;
+import com.dts.demo_cinema.Domain.Request.DeleteMovieRequest;
 import com.dts.demo_cinema.Domain.Request.MovieRequest;
 import com.dts.demo_cinema.Repositories.MovieRepositoryInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class MoviesService implements BaseService<MoviesEntity>{
+public class MoviesService implements BaseMovieTheaterService<MoviesEntity>{
 //    @Autowired
 //    private MoviesReponsitory moviesReponsitory;
 //
@@ -64,7 +65,7 @@ public class MoviesService implements BaseService<MoviesEntity>{
     public MoviesEntity findById(Integer id) {
             Optional<MoviesEntity> optionalMoviesEntity = movieRepositoryInterface.findById(id);
             if (optionalMoviesEntity.isPresent()){
-                optionalMoviesEntity.get();
+                return optionalMoviesEntity.get();
             }
             return null;
     }
@@ -91,5 +92,26 @@ public class MoviesService implements BaseService<MoviesEntity>{
             baseReponse.server_err();
         }
         return baseReponse;
+    }
+
+    public Reponse deleteMovie(DeleteMovieRequest request){
+        Reponse reponse = new Reponse();
+        try {
+            MoviesEntity moviesEntity = findById(request.getId_movie());
+            if (moviesEntity != null){
+                movieRepositoryInterface.delete(moviesEntity);
+            }
+        }catch (Exception e){
+            reponse.server_err();
+        }
+        return reponse;
+    }
+
+    public List<MoviesEntity> findByMovieTheater(Integer id_movie){
+        return movieRepositoryInterface.findByMovieTheater(id_movie);
+    }
+
+    public List<MoviesEntity> findByName(String name_movie){
+        return movieRepositoryInterface.findByName(name_movie);
     }
 }

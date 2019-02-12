@@ -1,10 +1,29 @@
 package com.dts.demo_cinema.Domain.Entity;
 
+import com.dts.demo_cinema.Domain.Mapping.InformationSeat;
+import com.dts.demo_cinema.Domain.Request.FindByNameMovieTheater;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "team2_seat", schema = "booking_cinema", catalog = "")
+@SqlResultSetMappings(
+        @SqlResultSetMapping(name = "InformationSeat",
+                classes = @ConstructorResult(
+                    targetClass = InformationSeat.class,
+                        columns = {
+                            @ColumnResult(name = "id_seat", type = Integer.class),
+                                @ColumnResult(name = "id_room", type = Integer.class),
+                                @ColumnResult(name = "name_room", type = String.class),
+                                @ColumnResult(name = "id_screening", type = Integer.class),
+                                @ColumnResult(name = "active", type = Integer.class),
+                                @ColumnResult(name = "row_seat", type = String.class),
+                                @ColumnResult(name = "number_seat", type = Integer.class)
+                        }
+                ))
+
+)
 public class SeatEntity {
     private int idSeat;
     private String rowSeat;
